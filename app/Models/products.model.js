@@ -18,9 +18,7 @@ export default function ProductModel(sequelize, DataTypes, Model) {
             allowNull: false
         },
         image: {
-            type: DataTypes.TEXT,
-            required: true,
-            allowNull: false
+            type: DataTypes.TEXT
         },
         description: {
             type: DataTypes.TEXT,

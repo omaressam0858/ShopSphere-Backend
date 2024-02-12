@@ -12,7 +12,7 @@ const loginController = async (req, res, next) => {
         const validPassword = await bcrypt.compare(req.body.password, user.password);
         if (!validPassword) return res.status(400).send("Email or password is wrong");
 
-        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET);
+        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET , { expiresIn: '1d' });
         res.status(200).json({ token: token, user: { id: user.id, email: user.email, isAdmin: user.isAdmin }});
     }
     catch (err) {
