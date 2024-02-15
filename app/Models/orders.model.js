@@ -14,6 +14,10 @@ export default function OrderModel(sequelize, DataTypes, Model) {
             type: DataTypes.FLOAT,
             required: true,
             allowNull: false
+        },
+        status: {
+            type: DataTypes.SMALLINT,  // 0: Pending , 1:Paid ,  2: Delivered , 3: Done , 4: Canceled
+            defaultValue: 0
         }
 
     }, {

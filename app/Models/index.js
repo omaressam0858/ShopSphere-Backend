@@ -12,17 +12,20 @@ const Product = ProductModel(sequelize, DataTypes, Model)
 const Order = OrderModel(sequelize, DataTypes, Model)
 const OrderItem = OrderItemModel(sequelize, DataTypes, Model)
 
-User.hasMany(Order)
-Order.belongsTo(User)
+User.hasMany(Order);
+Order.belongsTo(User);
 
-Product.belongsToMany(Order, {through: OrderItem})
-Order.belongsToMany(Product, {through: OrderItem})
+Order.hasMany(OrderItem);
+OrderItem.belongsTo(Order);
 
+Product.belongsToMany(Order, { through: OrderItem });
+Order.belongsToMany(Product, { through: OrderItem });
 
-sequelize.sync({alter: true}) 
+sequelize.sync({}) 
 
 export {
     User,
     Product,
-    Order
+    Order,
+    OrderItem
 }
