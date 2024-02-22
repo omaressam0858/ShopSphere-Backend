@@ -1,5 +1,6 @@
 import Stripe from "stripe";
-const stripe = new Stripe(process.env.STRIPE_APIKEY)
+import { STRIPE_WEBHOOK,STRIPE_APIKEY } from "../../config.js";
+const stripe = new Stripe(STRIPE_APIKEY)
 
 import { Order } from "../../models/index.js";
 
@@ -8,7 +9,7 @@ export default async (request,response) => {
     let event;
   
     try {
-      event = stripe.webhooks.constructEvent(request.body, sig, process.env.STRIPE_WEBHOOK);
+      event = stripe.webhooks.constructEvent(request.body, sig, STRIPE_WEBHOOK);
     } catch (err) {
       console.log(`Webhook Error: ${err.message}`)
       response.status(400).send(`Webhook Error: ${err.message}`);

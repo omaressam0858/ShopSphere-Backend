@@ -1,5 +1,5 @@
 import { User } from '../../models/index.js';
-import { registerValidation } from '../../utils/validations/register.validation.js';
+import { registerValidation } from '../../utils/validations/authentication.validation.js';
 
 const registerController = async (req, res, next) => {
     try{

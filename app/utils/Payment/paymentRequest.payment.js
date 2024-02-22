@@ -1,5 +1,6 @@
 import Stripe from "stripe";
-const stripe = new Stripe(process.env.STRIPE_APIKEY)
+import { STRIPE_APIKEY } from "../../config.js";
+const stripe = new Stripe(STRIPE_APIKEY)
 
 export default async function paymentRequest(line_items,orderId) {
     const session = await stripe.checkout.sessions.create({

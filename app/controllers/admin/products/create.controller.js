@@ -1,5 +1,5 @@
 import { Product } from "../../../models/index.js";
-import { createProduct } from "../../../utils/validations/create.product.validation.js";
+import { prodcutValidation } from "../../../utils/validations/product.validation.js";
 
 export default async (req, res, next) => {
     try {

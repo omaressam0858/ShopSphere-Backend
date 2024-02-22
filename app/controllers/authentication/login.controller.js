@@ -1,7 +1,7 @@
 import { User } from "../../models/index.js"; 
 import jwt  from "jsonwebtoken";
 import bcrypt from "bcrypt";
-import {loginValidation} from "../../utils/validations/login.validation.js";
+import {loginValidation} from "../../utils/validations/authentication.validation.js";
 
 const loginController = async (req, res, next) => {
     try {
@@ -13,7 +13,7 @@ const loginController = async (req, res, next) => {
         if (!validPassword) return res.status(400).json({message:"Email or password is wrong"});
 
         const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET , { expiresIn: '1d' });
-        res.status(200).json({ token: token, user: { id: user.id, email: user.email, isAdmin: user.isAdmin }});
+        res.status(200).json({ token: token, user: { id: user.id,firstName: user.firstName,lastName: user.lastName ,email: user.email, isAdmin: user.isAdmin }});
     }
     catch (err) {
         next(err);
